@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+{%  block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/regpage.css' %}">
+{% endblock %}
+{% block start %}
+  <body>
+    <div class="container">
+      <h1>User Update</h1>
+      <form method="post" action="{%url 'update_user' user_data.id %}">   
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        
+      </form>
+    </div>
+  </body>
+  {% endblock %}
+</html>

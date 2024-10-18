@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%  block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block start %}
+<body>
+    <div class="home-container">
+        <h1>Welcome to the Home Page!</h1>
+    
+    {% if user_role == 'admin' %}
+        <p>Hello Admin! Here are your exclusive controls and reports.</p>
+    {% elif user_role == 'user' %}
+        <p>Welcome back, valued user!</p>
+    {% else %}
+        <p>Welcome, guest! Please log in to access more features.</p>
+    {% endif %}
+        <form action="{% url 'logout_page' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" >Logout</button>
+        </form>
+
+    </div>
+
+</body>
+{% endblock %}
+</html>
